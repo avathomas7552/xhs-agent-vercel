@@ -1,0 +1,38 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/health",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/$1"
+    }
+  ],
+  "env": {
+    "TEXT_API_BASE": "@text_api_base",
+    "TEXT_API_KEY": "@text_api_key",
+    "TEXT_MODEL": "@text_model",
+    "IMAGE_API_BASE": "@image_api_base",
+    "IMAGE_API_KEY": "@image_api_key",
+    "IMAGE_MODEL": "@image_model"
+  }
+}
