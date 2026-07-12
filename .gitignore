@@ -5,3 +5,11 @@ node_modules/
 dist/
 build/
 .git/index.lock
+
+# 排除生成的图片文件
+backend/public/generated/*.png
+backend/public/generated/*.jpg
+backend/public/generated/*.jpeg
+
+# Vercel
+.vercel
